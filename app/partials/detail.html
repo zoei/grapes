@@ -1,0 +1,22 @@
+<a href="#">{{actTitle}}</a>
+<input class="btn btn-default pull-right" type="button" hm-tap="join()" ng-show="showJoin()" value="Join">
+<p>{{category}}</p>
+<p>{{address}}</p>
+<p>{{fee}}</p>
+<p>{{planner}}</p>
+<p>{{time}}</p>
+<hr/>
+
+<div class="list-group" show-scrollbar="true" class="list-group">
+    <li ng-repeat="item in items" class="list-group-item">
+        <p>{{item.title}}</p>
+        <p>{{item.place}}</p>
+        <p>{{item.content}}</p>
+        <p>{{item.lasting}}</p>
+        <p>{{item.status}}</p>
+    </li>
+</div>
+
+<li ng-repeat="member in members" class="">
+    <a href="#/user">{{member.nickname}}&nbsp;</a>
+</li>

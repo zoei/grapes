@@ -1,7 +1,7 @@
 angular.module('grapes.services').factory('GrapesServ', ['HTTPProxy', 'Formator',
 	function(HTTPProxy, Formator) {
 		var factory = {};
-		var way = 'ajax';// jsonp/server
+		var way = 'ajax'; // jsonp/server
 
 		factory.getUser = function(params, callback) {
 			var defaultParams = {
@@ -12,7 +12,7 @@ angular.module('grapes.services').factory('GrapesServ', ['HTTPProxy', 'Formator'
 			};
 
 			var transform = function(result) {
-				if(typeof result === 'string'){
+				if (typeof result === 'string') {
 					result = JSON.parse(result);
 				}
 				return result.data;
@@ -36,7 +36,7 @@ angular.module('grapes.services').factory('GrapesServ', ['HTTPProxy', 'Formator'
 			};
 
 			factory.userResource = factory.userResource || HTTPProxy.init(config);
-			if(way === 'jsonp' || way === 'server'){
+			if (way === 'jsonp' || way === 'server') {
 				return factory.userResource.request(Formator.encodeJsonpRequest(request), callback);
 			} else {
 				return factory.userResource.request(request.params, callback);
@@ -52,7 +52,7 @@ angular.module('grapes.services').factory('GrapesServ', ['HTTPProxy', 'Formator'
 			};
 
 			var transform = function(result) {
-				if(typeof result === 'string'){
+				if (typeof result === 'string') {
 					result = JSON.parse(result);
 				}
 				return result.data;
@@ -76,7 +76,7 @@ angular.module('grapes.services').factory('GrapesServ', ['HTTPProxy', 'Formator'
 			};
 
 			factory.activityMembersResource = factory.activityMembersResource || HTTPProxy.init(config);
-			if(way === 'jsonp' || way === 'server'){
+			if (way === 'jsonp' || way === 'server') {
 				return factory.activityMembersResource.request(Formator.encodeJsonpRequest(request), callback);
 			} else {
 				return factory.activityMembersResource.request(request.params, callback);
@@ -92,7 +92,7 @@ angular.module('grapes.services').factory('GrapesServ', ['HTTPProxy', 'Formator'
 			};
 
 			var transform = function(result) {
-				if(typeof result === 'string'){
+				if (typeof result === 'string') {
 					result = JSON.parse(result);
 				}
 				return result.data;
@@ -116,7 +116,7 @@ angular.module('grapes.services').factory('GrapesServ', ['HTTPProxy', 'Formator'
 			};
 
 			factory.userActivitiesResource = factory.userActivitiesResource || HTTPProxy.init(config);
-			if(way === 'jsonp' || way === 'server'){
+			if (way === 'jsonp' || way === 'server') {
 				return factory.userActivitiesResource.request(Formator.encodeJsonpRequest(request), callback);
 			} else {
 				return factory.userActivitiesResource.request(request.params, callback);
@@ -132,7 +132,7 @@ angular.module('grapes.services').factory('GrapesServ', ['HTTPProxy', 'Formator'
 			};
 
 			var transform = function(result) {
-				if(typeof result === 'string'){
+				if (typeof result === 'string') {
 					result = JSON.parse(result);
 				}
 				return result.data;
@@ -156,7 +156,7 @@ angular.module('grapes.services').factory('GrapesServ', ['HTTPProxy', 'Formator'
 			};
 
 			factory.publicActivitiesResource = factory.publicActivitiesResource || HTTPProxy.init(config);
-			if(way === 'jsonp' || way === 'server'){
+			if (way === 'jsonp' || way === 'server') {
 				return factory.publicActivitiesResource.request(Formator.encodeJsonpRequest(request), callback);
 			} else {
 				return factory.publicActivitiesResource.request(request.params, callback);
@@ -172,7 +172,7 @@ angular.module('grapes.services').factory('GrapesServ', ['HTTPProxy', 'Formator'
 			};
 
 			var transform = function(result) {
-				if(typeof result === 'string'){
+				if (typeof result === 'string') {
 					result = JSON.parse(result);
 				}
 				return result.data;
@@ -196,7 +196,7 @@ angular.module('grapes.services').factory('GrapesServ', ['HTTPProxy', 'Formator'
 			};
 
 			factory.activityDetailResource = factory.activityDetailResource || HTTPProxy.init(config);
-			if(way === 'jsonp' || way === 'server'){
+			if (way === 'jsonp' || way === 'server') {
 				return factory.activityDetailResource.request(Formator.encodeJsonpRequest(request), callback);
 			} else {
 				return factory.activityDetailResource.request(request.params, callback);
@@ -213,7 +213,7 @@ angular.module('grapes.services').factory('GrapesServ', ['HTTPProxy', 'Formator'
 			};
 
 			var transform = function(result) {
-				if(typeof result === 'string'){
+				if (typeof result === 'string') {
 					result = JSON.parse(result);
 				}
 				return result.data;
@@ -237,7 +237,7 @@ angular.module('grapes.services').factory('GrapesServ', ['HTTPProxy', 'Formator'
 			};
 
 			factory.doLoginResource = factory.doLoginResource || HTTPProxy.init(config);
-			if(way === 'jsonp' || way === 'server'){
+			if (way === 'jsonp' || way === 'server') {
 				return factory.doLoginResource.request(Formator.encodeJsonpRequest(request), callback);
 			} else {
 				return factory.doLoginResource.request(request.params, callback);
@@ -251,16 +251,16 @@ angular.module('grapes.services').factory('GrapesServ', ['HTTPProxy', 'Formator'
 				user: params.username,
 				password: params.userpass,
 				nickname: params.nickname,
-        sex: params.sex,
-        mail: params.email,
-        phone: params.phone,
-        address: params.address,
-        headicon: params.headicon,
+				sex: params.sex,
+				mail: params.email,
+				phone: params.phone,
+				address: params.address,
+				headicon: params.headicon,
 				res: 'json'
 			};
 
 			var transform = function(result) {
-				if(typeof result === 'string'){
+				if (typeof result === 'string') {
 					result = JSON.parse(result);
 				}
 				return result.data;
@@ -284,7 +284,7 @@ angular.module('grapes.services').factory('GrapesServ', ['HTTPProxy', 'Formator'
 			};
 
 			factory.doRegisterResource = factory.doRegisterResource || HTTPProxy.init(config);
-			if(way === 'jsonp' || way === 'server'){
+			if (way === 'jsonp' || way === 'server') {
 				return factory.doRegisterResource.request(Formator.encodeJsonpRequest(request), callback);
 			} else {
 				return factory.doRegisterResource.request(request.params, callback);
@@ -301,7 +301,7 @@ angular.module('grapes.services').factory('GrapesServ', ['HTTPProxy', 'Formator'
 			};
 
 			var transform = function(result) {
-				if(typeof result === 'string'){
+				if (typeof result === 'string') {
 					result = JSON.parse(result);
 				}
 				return result.data;
@@ -325,7 +325,7 @@ angular.module('grapes.services').factory('GrapesServ', ['HTTPProxy', 'Formator'
 			};
 
 			factory.joinActivityResource = factory.joinActivityResource || HTTPProxy.init(config);
-			if(way === 'jsonp' || way === 'server'){
+			if (way === 'jsonp' || way === 'server') {
 				return factory.joinActivityResource.request(Formator.encodeJsonpRequest(request), callback);
 			} else {
 				return factory.joinActivityResource.request(request.params, callback);
@@ -340,16 +340,16 @@ angular.module('grapes.services').factory('GrapesServ', ['HTTPProxy', 'Formator'
 				category: params.category || 0,
 				planner: params.planner || '',
 				time: params.time || '',
-        address: params.address || '',
-        fee: params.fee || '',
-        content: params.content || '',
-        comment: params.comment || '',
-        image_urls: params.image_urls || '',
+				address: params.address || '',
+				fee: params.fee || '',
+				content: params.content || '',
+				comment: params.comment || '',
+				image_urls: params.image_urls || '',
 				scope: params.scope || 0
 			};
 
 			var transform = function(result) {
-				if(typeof result === 'string'){
+				if (typeof result === 'string') {
 					result = JSON.parse(result);
 				}
 				return result.data;
@@ -373,7 +373,7 @@ angular.module('grapes.services').factory('GrapesServ', ['HTTPProxy', 'Formator'
 			};
 
 			factory.addActivityResource = factory.addActivityResource || HTTPProxy.init(config);
-			if(way === 'jsonp' || way === 'server'){
+			if (way === 'jsonp' || way === 'server') {
 				return factory.addActivityResource.request(Formator.encodeJsonpRequest(request), callback);
 			} else {
 				return factory.addActivityResource.request(request.params, callback);
@@ -386,16 +386,16 @@ angular.module('grapes.services').factory('GrapesServ', ['HTTPProxy', 'Formator'
 				api: 'add_act_items',
 				act: params.act,
 				items: JSON.stringify(params.items)
-				// title: params.title,
-				// category: params.category || 0,
-				// place: params.place || '',
-				// lasting: params.lasting || '',
-				// content: params.content || '',
-				// image_urls: params.image_urls || ''
+					// title: params.title,
+					// category: params.category || 0,
+					// place: params.place || '',
+					// lasting: params.lasting || '',
+					// content: params.content || '',
+					// image_urls: params.image_urls || ''
 			};
 
 			var transform = function(result) {
-				if(typeof result === 'string'){
+				if (typeof result === 'string') {
 					result = JSON.parse(result);
 				}
 				return result.data;
@@ -419,7 +419,7 @@ angular.module('grapes.services').factory('GrapesServ', ['HTTPProxy', 'Formator'
 			};
 
 			factory.addActivityItemsResource = factory.addActivityItemsResource || HTTPProxy.init(config);
-			if(way === 'jsonp' || way === 'server'){
+			if (way === 'jsonp' || way === 'server') {
 				return factory.addActivityItemsResource.request(Formator.encodeJsonpRequest(request), callback);
 			} else {
 				return factory.addActivityItemsResource.request(request.params, callback);

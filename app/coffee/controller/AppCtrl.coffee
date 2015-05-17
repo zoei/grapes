@@ -9,4 +9,6 @@ angular.module("grapes.controllers").controller "AppCtrl", [
       $scope.rightAction = options.rightAction
       $scope.titleVisible = options.visible
       return
+
+    myScroll = new IScroll 'ng-view'
 ]

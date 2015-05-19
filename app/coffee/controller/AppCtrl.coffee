@@ -10,5 +10,12 @@ angular.module("grapes.controllers").controller "AppCtrl", [
       $scope.titleVisible = options.visible
       return
 
-    myScroll = new IScroll 'ng-view'
+    $scope.$on '$viewContentLoading', ->
+      console.log 'viewContentLoading'
+    $scope.$on '$viewContentLoaded', ->
+      console.log 'viewContentLoaded'
+    $scope.$on '$routeChangeSuccess', ->
+      console.log 'routeChangeSuccess'
+    $scope.$on '$stateChangeSuccess', ->
+      console.log 'stateChangeSuccess'
 ]

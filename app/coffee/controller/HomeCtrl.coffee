@@ -13,18 +13,17 @@ angular.module("grapes.controllers").controller "HomeCtrl", [
 
       visible: true
 
-    $rootScope.userActivities = GrapesServ.getUserActivities(
-      user: $rootScope.currentUser
-    , (acts) ->
-    )
+    # $rootScope.userActivities = GrapesServ.getUserActivities(
+    #   user: $rootScope.currentUser
+    # , (acts) ->
+    # )
     
-    # $scope.scroller.delayRefresh();
     $scope.pub_acts = GrapesServ.getPublicActivities(
       count: 20
     , (acts) ->
+      $scope.$scrollers.refresh('s1', 500);
     )
-    
-    # $scope.scroller.delayRefresh();
+
     $scope.onActTap = (act) ->
       window.location.hash = "#/grapes_detail/" + act.id
       return

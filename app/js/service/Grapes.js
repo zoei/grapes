@@ -1,7 +1,7 @@
 angular.module('grapes.services').factory('GrapesServ', ['HTTPProxy', 'Formator',
 	function(HTTPProxy, Formator) {
 		var factory = {};
-		var way = 'ajax'; // jsonp/server
+		var way = 'jsonp'; // jsonp/server
 
 		factory.getUser = function(params, callback) {
 			var defaultParams = {

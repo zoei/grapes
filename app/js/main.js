@@ -39,7 +39,3 @@ angular.module('grapes',
 				});
 		}
 	]);
-
-$(document).ready(function() {
-	angular.bootstrap(document, ['grapes']);
-});

@@ -1,11 +1,25 @@
 angular.module("grapes.directives").directive "footer", ->
   restrict: "EA"
-  template: '<div class="navbar-fixed-bottom footer">
-              <ul class="nav nav-tabs">
-               <li><a href="#/home">活动</a></li>
-               <li><a href="#/grapes_new_activity">发布</a></li>
-               <li><a href="#/grapes_user_login">朋友</a></li>
-               <li><a href="#/grapes_user_console">我的</a></li>
-            </ul>
-            </div>'
+  template: '<nav class="bar bar-tab">
+              <a class="tab-item active" href="#home">
+                <span class="icon icon-home"></span>
+                <span class="tab-label">Home</span>
+              </a>
+              <a class="tab-item" href="#grapes_user_console">
+                <span class="icon icon-person"></span>
+                <span class="tab-label">Profile</span>
+              </a>
+              <a class="tab-item" href="#grapes_user_login">
+                <span class="icon icon-star-filled"></span>
+                <span class="tab-label">Favorites</span>
+              </a>
+              <a class="tab-item" href="#">
+                <span class="icon icon-search"></span>
+                <span class="tab-label">Search</span>
+              </a>
+              <a class="tab-item" href="#grapes_new_activity">
+                <span class="icon icon-gear"></span>
+                <span class="tab-label">Settings</span>
+              </a>
+            </nav>'
   replace: true

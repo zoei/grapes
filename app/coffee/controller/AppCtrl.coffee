@@ -1,6 +1,7 @@
 angular.module("grapes.controllers").controller "AppCtrl", [
   "$scope"
-  ($scope) ->
+  "$route"
+  ($scope, $route) ->
     $scope.setTitle = (options) ->
       $scope.title = options.title or ""
       $scope.leftText = options.leftText or ""
@@ -10,12 +11,16 @@ angular.module("grapes.controllers").controller "AppCtrl", [
       $scope.titleVisible = options.visible
       return
 
-    $scope.$on '$viewContentLoading', ->
-      console.log 'viewContentLoading'
-    $scope.$on '$viewContentLoaded', ->
-      console.log 'viewContentLoaded'
-    $scope.$on '$routeChangeSuccess', ->
-      console.log 'routeChangeSuccess'
-    $scope.$on '$stateChangeSuccess', ->
-      console.log 'stateChangeSuccess'
+    $scope.$on '$locationChangeStart', (event) ->
+      console.log event
+    # $('ng-view').attr('id', )
+
+    # $scope.$on '$viewContentLoading', ->
+    #   console.log 'viewContentLoading'
+    # $scope.$on '$viewContentLoaded', ->
+    #   console.log 'viewContentLoaded'
+    # $scope.$on '$routeChangeSuccess', ->
+    #   console.log 'routeChangeSuccess'
+    # $scope.$on '$stateChangeSuccess', ->
+    #   console.log 'stateChangeSuccess'
 ]

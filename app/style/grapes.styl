@@ -1,4 +1,16 @@
-@import "component/footer"
-@import "component/scroller"
+@import "base/colors"
+@import "base/consts"
 
-@import "page/home"
+@import "component/scroller"
+@import "component/footer"
+
+@import "view/home"
+
+.g-view, g-view
+  
+  .bar-nav~.content
+    margin-top: header-height-normal
+    padding-top: 0
+
+  .content
+    margin-bottom: footer-height-normal !important

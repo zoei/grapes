@@ -1,21 +1,17 @@
-<scrollable show-scrollbar="true" scroller-id="s1">
-<!--     <div ng-show="!!currentUser">
-        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-        <a href="#/grapes_user_console">{{currentUser}}</a>
-        <button class="btn btn-default" hm-tap="logout()" type="button">Log out</button>
-    </div>
-    <div ng-show="!currentUser">
-        <button class="btn btn-default" hm-tap="goLogin()" type="button">Login</button>
-        <button class="btn btn-default" hm-tap="goRegister()" type="button">Register</button>
-    </div> -->
-    <div class="list-group">
-<!--         <li ng-repeat="act in userActivities" hm-tap="onActTap(act)" class="list-group-item">
-            <span class="txt-title txt-ellipsis">{{act.title}}</span>
-            <span class="pull-right">{{act.time}}</span>
-        </li> -->
-        <li ng-repeat="act in pub_acts" hm-tap="onActTap(act)" class="list-group-item">
-            <span class="txt-title txt-ellipsis">{{act.title}}</span>
-            <span class="pull-right">{{act.time}}</span>
-        </li>
-    </div>
-</scrollable>
+<g-view id="home">
+    <header></header>
+    <scrollable show-scrollbar="true" scroller-id="s1" class="content"> 
+        <ul class="table-view">
+          <li ng-repeat="act in pub_acts" hm-tap="onActTap(act)" class="table-view-cell media">
+            <a class="navigate-right">
+              <img class="media-object pull-left" src="http://placehold.it/42x42">
+              <div class="media-body">
+                {{act.title}}
+                <p>{{act.time}}</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+    </scrollable>
+    <footer></footer>
+</g-view>

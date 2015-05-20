@@ -21,7 +21,8 @@ var tasks = {
             .pipe(gulp.dest('./build/www'));
 
         gulp.src([
-                './app/css/bootstrap.min.css'
+                './app/css/ratchet.min.css'
+                // './app/css/ratchet-theme-ios.min.css'
             ])
             .pipe(concat('deps.css'))
             .pipe(gulp.dest('./build/www/css'));
@@ -34,7 +35,7 @@ var tasks = {
                 './app/lib/jquery-2.0.3.min.js',
                 './app/lib/hammer.js',
                 './app/lib/iscroll.js',
-                './app/lib/bootstrap.js',
+                './app/lib/ratchet.min.js',
                 './app/lib/angular.js',
                 './app/lib/angular-route.js',
                 './app/lib/angular-resource.js',

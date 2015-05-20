@@ -11,7 +11,7 @@ angular.module("grapes.controllers").controller "HomeCtrl", [
         window.location.hash = "#/grapes_new_activity"
         return
 
-      visible: true
+      visible: false
 
     # $rootScope.userActivities = GrapesServ.getUserActivities(
     #   user: $rootScope.currentUser

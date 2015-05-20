@@ -29,6 +29,3 @@ angular.module("grapes", [
       controller: "NewActivityCtrl"
     ).otherwise redirectTo: "/home"
 ]
-$(document).ready ->
-  angular.bootstrap document, ["grapes"]
-  return

@@ -3,27 +3,29 @@ angular.module("grapes.controllers").controller "UserLoginCtrl", [
   "$rootScope"
   "GrapesServ"
   ($scope, $rootScope, GrapesServ) ->
+    $scope.user = 
+      name: ""
+      pass: ""
+
     $scope.setTitle
       title: "Login"
       leftText: "Home"
       rightText: ""
       leftAction: (e) ->
-        window.location.hash = "#/grapes"
         return
 
       rightAction: (e) ->
-        console.debug "right tap", e
         return
 
       visible: true
 
     $scope.doLogin = ->
       GrapesServ.doLogin
-        username: $scope.username
-        userpass: $scope.userpass
+        username: $scope.user.name
+        userpass: $scope.user.pass
       , (result) ->
         if result.code is "S00"
-          $rootScope.currentUser = $scope.username
+          $rootScope.currentUser = $scope.user.name
           window.location.hash = "#/grapes"
         return
 

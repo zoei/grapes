@@ -17,20 +17,27 @@ angular.module("grapes.directives").directive 'scrollable', ->
       preventDefaultException:
         tagName: /^.*$/
 
-    scope.$scrollers = scope._scrollers ? 
+    window.scrollers = scope.$scrollers = scope._scrollers ? 
       _scrollers: {},
+      get: (id) ->
+        scope.$scrollers._scrollers[id]
       put: (id, scroller) ->
         scope.$scrollers._scrollers[id] = scroller
         return
-      refreshAll: ->
-        scroller.refresh for scroller in scope.$scrollers
+      refreshAll: (delay) ->
+        setTimeout scroller.refresh, delay for scroller in scope.$scrollers
         return
-      refresh: (id, delay) ->
+      refresh: (id, delay, initPos = false) ->
         setTimeout ->
-          scope.$scrollers._scrollers[id].refresh true
+          scope.$scrollers._scrollers[id].refresh()
+          scope.$scrollers._scrollers[id].scrollTo 0, 0, 0 if initPos
+
           return
-        , delay ? 0
+        , delay ? 200
         return
 
     scope.$scrollers.put scrollerId, _scroller
+
+    $(element.children()[0]).resize ->
+      _scroller.refresh()
     return

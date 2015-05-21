@@ -18,11 +18,7 @@ angular.module("grapes.controllers").controller "HomeCtrl", [
     # , (acts) ->
     # )
     
-    $scope.pub_acts = GrapesServ.getPublicActivities(
-      count: 20
-    , (acts) ->
-      $scope.$scrollers.refresh('s1', 500);
-    )
+    $scope.pub_acts = GrapesServ.getPublicActivities count: 20
 
     $scope.onActTap = (act) ->
       window.location.hash = "#/grapes_detail/" + act.id

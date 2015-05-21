@@ -30,10 +30,15 @@ var tasks = {
         gulp.src('./app/fonts/**/*.*')
             .pipe(gulp.dest('./build/www/fonts'));
 
+        gulp.src('./app/data/**/*.*')
+            .pipe(gulp.dest('./build/www/data'));
+
         gulp.src([
                 './app/lib/b64.js',
                 './app/lib/jquery-2.0.3.min.js',
                 './app/lib/hammer.js',
+                './app/lib/jquery.hammer.js',
+                './app/lib/jquery.ba-resize.js',
                 './app/lib/iscroll.js',
                 './app/lib/ratchet.min.js',
                 './app/lib/angular.js',

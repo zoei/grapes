@@ -3,7 +3,7 @@ angular.module("grapes.controllers").controller "NewActivityCtrl", [
   "$rootScope"
   "GrapesServ"
   ($scope, $rootScope, GrapesServ) ->
-    window.location.hash = "#/grapes_user_login"  unless $rootScope.currentUser
+    # window.location.hash = "#/grapes_user_login"  unless $rootScope.currentUser
     $scope.setTitle
       title: "Create Activity"
       leftText: "Home"
@@ -16,7 +16,17 @@ angular.module("grapes.controllers").controller "NewActivityCtrl", [
 
       visible: true
 
-    window.location.hash = "#/grapes_user_login"  unless $rootScope.currentUser
+    $scope.activity = 
+      title: ''
+      category: ''
+      time: ''
+      address: ''
+      fee: ''
+      content: ''
+      comment: ''
+      image_urls: ''
+      scope: ''
+
     $scope.ActivityCategories = [
       "美食"
       "娱乐"
@@ -27,6 +37,18 @@ angular.module("grapes.controllers").controller "NewActivityCtrl", [
       "AA"
       "免费"
       "请客"
+    ]
+    $scope.ActivityScopes = [
+      {
+        text: 'private'
+        value: 'private'
+        checked: true
+      }
+      {
+        text: 'public',
+        value: 'public'
+        checked: false
+      }
     ]
     $scope.categoryChange = ->
       console.debug $scope.activityCategory, $scope.ActivityCategories[$scope.activityCategory]
@@ -45,23 +67,22 @@ angular.module("grapes.controllers").controller "NewActivityCtrl", [
         place: ""
         lasting: ""
         content: ""
-
       return
 
     
     # $scope.addItem();
     $scope.save = ->
       GrapesServ.addActivity
-        title: $scope.actTitle
-        category: $scope.category
+        title: $scope.activity.title
+        category: $scope.activity.category
         planner: $rootScope.currentUser
-        time: $scope.time
-        address: $scope.address
-        fee: $scope.fees[$scope.fee]
-        content: $scope.content
-        comment: $scope.comment
-        image_urls: $scope.image_urls
-        scope: $scope.scope
+        time: $scope.activity.time
+        address: $scope.activity.address
+        fee: $scope.fees[$scope.activity.fee]
+        content: $scope.activity.content
+        comment: $scope.activity.comment
+        image_urls: $scope.activity.image_urls
+        scope: $scope.activity.scope
       , (result) ->
         $scope.act = result.act_id
         $scope.saveItems()

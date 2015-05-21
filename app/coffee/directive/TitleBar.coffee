@@ -1,4 +1,4 @@
-angular.module("grapes.directives").directive "header", ->
+angular.module("grapes.directives").directive "titleBar", ->
   restrict: "EA"
   template: '<a class="icon icon-left-nav pull-left" hm-tap="leftAction($event)"></a>
             <h1 class="title">{{title}}</h1>

@@ -1,4 +1,4 @@
-/*! iScroll v5.1.2 ~ (c) 2008-2014 Matteo Spinelli ~ http://cubiq.org/license */
+/*! iScroll v5.1.3 ~ (c) 2008-2014 Matteo Spinelli ~ http://cubiq.org/license */
 (function (window, document, Math) {
 var rAF = window.requestAnimationFrame	||
 	window.webkitRequestAnimationFrame	||
@@ -332,7 +332,7 @@ function IScroll (el, options) {
 }
 
 IScroll.prototype = {
-	version: '5.1.2',
+	version: '5.1.3',
 
 	_init: function () {
 		this._initEvents();
@@ -660,7 +660,7 @@ IScroll.prototype = {
 		this.enabled = true;
 	},
 
-	refresh: function (initPos) {
+	refresh: function () {
 		var rf = this.wrapper.offsetHeight;		// Force reflow
 
 		this.wrapperWidth	= this.wrapper.clientWidth;
@@ -696,11 +696,8 @@ IScroll.prototype = {
 		this.wrapperOffset = utils.offset(this.wrapper);
 
 		this._execEvent('refresh');
-		if(initPos){
-			this.scrollTo(0, 0, 0);
-		} else {
-			this.resetPosition();
-		}
+
+		this.resetPosition();
 
 // INSERT POINT: _refresh
 
@@ -1057,8 +1054,13 @@ IScroll.prototype = {
 		}, 400);
 
 		if ( 'deltaX' in e ) {
-			wheelDeltaX = -e.deltaX;
-			wheelDeltaY = -e.deltaY;
+			if (e.deltaMode === 1) {
+				wheelDeltaX = -e.deltaX * this.options.mouseWheelSpeed;
+				wheelDeltaY = -e.deltaY * this.options.mouseWheelSpeed;
+			} else {
+				wheelDeltaX = -e.deltaX;
+				wheelDeltaY = -e.deltaY;
+			}
 		} else if ( 'wheelDeltaX' in e ) {
 			wheelDeltaX = e.wheelDeltaX / 120 * this.options.mouseWheelSpeed;
 			wheelDeltaY = e.wheelDeltaY / 120 * this.options.mouseWheelSpeed;

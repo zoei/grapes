@@ -1,7 +1,7 @@
 angular.module("grapes.controllers").controller "AppCtrl", [
   "$scope"
-  "$route"
-  ($scope, $route) ->
+  "NavBarTabs"
+  ($scope, NavBarTabs) ->
     $scope.setTitle = (options) ->
       $scope.title = options.title or ""
       $scope.leftText = options.leftText or ""
@@ -11,9 +11,10 @@ angular.module("grapes.controllers").controller "AppCtrl", [
       $scope.titleVisible = options.visible
       return
 
-    $scope.$on '$locationChangeStart', (event) ->
-      console.log event
-    # $('ng-view').attr('id', )
+    $scope.barTabs = NavBarTabs.query()
+
+    # $scope.$on '$locationChangeStart', (event) ->
+    #   console.log event
 
     # $scope.$on '$viewContentLoading', ->
     #   console.log 'viewContentLoading'

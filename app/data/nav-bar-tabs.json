@@ -1,0 +1,24 @@
+[
+  {
+    "text": "Home",
+    "url": "#home",
+    "icon": "icon-home",
+    "cls": "active"
+  }, {
+    "text": "Profile",
+    "url": "#grapes_user_console",
+    "icon": "icon-person"
+  }, {
+    "text": "Favorites",
+    "url": "#grapes_user_login",
+    "icon": "icon-star-filled"
+  }, {
+    "text": "Search",
+    "url": "#home",
+    "icon": "icon-search"
+  }, {
+    "text": "Settings",
+    "url": "#grapes_new_activity",
+    "icon": "icon-gear"
+  }
+]

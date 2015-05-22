@@ -31,7 +31,7 @@ angular.module("grapes.controllers").controller "UserLoginCtrl", [
 
       return
 
-    $scope.goRegister = ->
+    $scope.doRegister = ->
       window.location.hash = "#/grapes_user_reg"
       return
 ]

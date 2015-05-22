@@ -37,14 +37,15 @@ var tasks = {
                 './app/lib/b64.js',
                 './app/lib/jquery-2.0.3.min.js',
                 './app/lib/hammer.js',
-                './app/lib/jquery.hammer.js',
+                // './app/lib/jquery.hammer.js',
                 './app/lib/jquery.ba-resize.js',
                 './app/lib/iscroll.js',
                 './app/lib/ratchet.min.js',
+                // './app/lib/push.js',
                 './app/lib/angular.js',
                 './app/lib/angular-route.js',
                 './app/lib/angular-resource.js',
-                './app/lib/angular.hammer.min.js',
+                './app/lib/angular-hammer.js',
             ])
             .pipe(concat('deps.js'))
             // .pipe(uglify())

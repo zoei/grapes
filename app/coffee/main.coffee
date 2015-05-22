@@ -9,7 +9,10 @@ angular.module("grapes", [
 ]).config [
   "$routeProvider"
   ($routeProvider) ->
-    $routeProvider.when("/home",
+    $routeProvider.when("/welcome",
+      templateUrl: "partials/welcome.html"
+      controller: "WelcomeCtrl"
+    ).when("/home",
       templateUrl: "partials/home.html"
       controller: "HomeCtrl"
     ).when("/grapes_detail/:act_id",

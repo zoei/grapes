@@ -1,16 +1,22 @@
 <g-view id="home">
-    <title-bar></title-bar>
-    <scrollable show-scrollbar="true" scroller-id="s1" class="content"> 
-        <ul class="table-view">
-          <li ng-repeat="act in pub_acts" hm-tap="onActTap(act)" class="table-view-cell media">
-            <a class="navigate-right">
-              <img class="media-object pull-left" src="http://placehold.it/42x42">
-              <div class="media-body">
-                {{act.title}}
-                <p>{{act.time}}</p>
-              </div>
-            </a>
-          </li>
-        </ul>
-    </scrollable>
+  <nav class="bar bar-standard">
+    <div class="segmented-control">
+      <a class="control-item active" hm-tap="switchAllActivities()">All</a>
+      <a class="control-item" hm-tap="switchNearbyActivities()">Nearby</a>
+      <a class="control-item" hm-tap="switchUserActivities()">Friends</a>
+    </div>
+  </nav>
+  <scrollable show-scrollbar="true" scroller-id="s1" class="content"> 
+    <ul class="table-view">
+      <li ng-repeat="act in acts" hm-tap="onActTap(act)" class="table-view-cell media">
+        <a class="navigate-right">
+          <img class="media-object pull-left" src="http://placehold.it/42x42">
+          <div class="media-body">
+            {{act.title}}
+            <p>{{act.time}}</p>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </scrollable>
 </g-view>

@@ -1,24 +1,19 @@
 [
   {
-    "text": "Home",
-    "url": "#home",
+    "id": "home",
+    "text": "活动",
+    "url": "#/home",
     "icon": "icon-home",
     "cls": "active"
   }, {
-    "text": "Profile",
-    "url": "#grapes_user_console",
-    "icon": "icon-person"
-  }, {
-    "text": "Favorites",
-    "url": "#grapes_user_login",
-    "icon": "icon-star-filled"
-  }, {
-    "text": "Search",
-    "url": "#home",
-    "icon": "icon-search"
-  }, {
-    "text": "Settings",
-    "url": "#grapes_new_activity",
+    "id": "new",
+    "text": "新活动",
+    "url": "#/grapes_new_activity",
     "icon": "icon-gear"
+  }, {
+    "id": "profile",
+    "text": "我",
+    "url": "#/grapes_user_console",
+    "icon": "icon-person"
   }
 ]

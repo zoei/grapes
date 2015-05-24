@@ -7,13 +7,13 @@
     "cls": "active"
   }, {
     "id": "new",
-    "text": "新活动",
-    "url": "#/grapes_new_activity",
-    "icon": "icon-gear"
+    "text": "发布",
+    "url": "#/new_activity",
+    "icon": "icon-plus"
   }, {
     "id": "profile",
-    "text": "我",
-    "url": "#/grapes_user_console",
+    "text": "我的",
+    "url": "#/user_console",
     "icon": "icon-person"
   }
 ]

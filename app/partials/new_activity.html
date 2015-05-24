@@ -1,41 +1,53 @@
 <g-view id="new-activity">
   <title-bar></title-bar>
   <scrollable show-scrollbar="true" scroller-id="s1" class="content">
-    <form>
-      <label>Title</label>
-      <input type="text" ng-model="activity.title" class="form-control" placeholder="Enter title">
-
-      <label>Category</label>
-      <select ng-model="activity.category" ng-options="ActivityCategories.indexOf(o) as o for o in ActivityCategories" ng-change="categoryChange()">
+    <form class="input-group">
+      <div class="input-row">
+        <label>封面</label>
+        <input type="text" ng-model="activity.images" placeholder="Enter Pic">
+      </div>
+      <div class="input-row">
+        <label>发起人</label>
+        <input type="text" ng-model="activity.planner" placeholder="Enter Planner">
+      </div>
+      <div>
+      <div class="input-row">
+        <label>标题</label>
+        <input type="text" ng-model="activity.title" placeholder="Enter Title">
+      </div>
+      <div>
+        <label>分类</label>
+        <select ng-model="activity.category" ng-options="ActivityCategories.indexOf(o) as o for o in ActivityCategories" ng-change="categoryChange()">
           <option value="">请选择</option>
-      </select>
-
-      <label>Time</label>
-      <input type="text" ng-model="activity.time" class="form-control" placeholder="Enter time">
-
-      <label>Address</label>
-      <input type="text" ng-model="activity.address" class="form-control" placeholder="Enter address">
-
-      <label>Fee</label>
-      <select ng-model="activity.fee" ng-options="fees.indexOf(o) as o for o in fees" ng-change="feeChange()">
-          <option value="0">AA</option>
-      </select>
-
-      <label>Content</label>
-      <textarea ng-model="activity.content" class="form-control" rows="3"></textarea>
-
-      <label>Comment</label>
-      <textarea ng-model="activity.comment" class="form-control" rows="3"></textarea>
-
+        </select>
+      </div>
+      <div>
+        <label>Fee</label>
+        <select ng-model="activity.fee" ng-options="fees.indexOf(o) as o for o in fees" ng-change="feeChange()">
+          <option value="">请选择</option>
+        </select>
+      </div>
+      <div class="input-row">
+        <label>Time</label>
+        <input type="text" ng-model="activity.time" placeholder="Enter time">
+      </div>
+      <div class="input-row">
+        <label>Address</label>
+        <input type="text" ng-model="activity.address" placeholder="Enter address">
+      </div>
+      <div class="input-row">
+        <label>Content</label>
+        <textarea ng-model="activity.content" rows="3"></textarea>
+      </div>
       <div>
         <label>Scope</label>
-        <div ng-repeat="scope in ActivityScopes">
+        <li ng-repeat="scope in ActivityScopes">
           <input type="radio" ng-model="activity.scope" name="optionsScope" value="{{scope.value}}" ng-checked="{{scope.checked}}">{{scope.text}}
-        </div>
+        </li>
       </div>
 
       <button type="button" hm-tap="addItem()" class="btn btn-default">+</button>
-
+        
       <li ng-repeat="item in items" class="list-group-item">
         <div activity-item data="item"></div>
       </li>

@@ -7,18 +7,6 @@ angular.module("grapes.controllers").controller "UserLoginCtrl", [
       name: ""
       pass: ""
 
-    $scope.setTitle
-      title: "Login"
-      leftText: "Home"
-      rightText: ""
-      leftAction: (e) ->
-        return
-
-      rightAction: (e) ->
-        return
-
-      visible: true
-
     $scope.doLogin = ->
       GrapesServ.doLogin
         username: $scope.user.name
@@ -26,12 +14,12 @@ angular.module("grapes.controllers").controller "UserLoginCtrl", [
       , (result) ->
         if result.code is "S00"
           $rootScope.currentUser = $scope.user.name
-          window.location.hash = "#/grapes"
+          window.location.hash = "#/user_console"
         return
 
       return
 
     $scope.doRegister = ->
-      window.location.hash = "#/grapes_user_reg"
+      window.location.hash = "#/user_reg"
       return
 ]

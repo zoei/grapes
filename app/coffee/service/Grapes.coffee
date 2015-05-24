@@ -4,6 +4,7 @@ angular.module("grapes.services").factory "GrapesServ", [
   (HTTPProxy, Formator) ->
     factory = {}
     way = "ajax" # jsonp/server
+
     factory.getUser = (params, callback) ->
       defaultParams =
         _id: 1

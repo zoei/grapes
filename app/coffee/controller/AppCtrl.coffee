@@ -1,9 +1,7 @@
 angular.module("grapes.controllers").controller "AppCtrl", [
   "$scope"
-  "NavBarTabs"
-  ($scope, NavBarTabs) ->
-
-    $scope.$root.showNavbar = true
+  '$rootScope'
+  ($scope, $rootScope) ->
 
     $scope.setTitle = (options) ->
       $scope.title = options.title or ""
@@ -14,7 +12,27 @@ angular.module("grapes.controllers").controller "AppCtrl", [
       $scope.titleVisible = options.visible
       return
 
-    $scope.barTabs = NavBarTabs.query()
+    $scope.barTabs = [
+      {
+        id: "home",
+        text: "活动",
+        url: "#/home",
+        icon: "icon-home",
+        cls: "active"
+      }, {
+        id: "new",
+        text: "发布",
+        url: "#/new_activity",
+        icon: "icon-plus"
+      }, {
+        id: "profile",
+        text: "我的",
+        url: "#/user_console",
+        icon: "icon-person",
+        fn: ->
+          window.location.hash = if $rootScope.currentUser then "#/user_console" else "#/user_login"
+      }
+    ]
 
     $scope.enter = ->
       $scope.showNavbar = true

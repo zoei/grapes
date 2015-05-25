@@ -30,5 +30,8 @@ angular.module("grapes", [
     ).when("/new_activity",
       templateUrl: "partials/new_activity.html"
       controller: "NewActivityCtrl"
+    ).when("/setting",
+      templateUrl: "partials/setting.html"
+      controller: "SettingCtrl"
     ).otherwise redirectTo: "/home"
 ]

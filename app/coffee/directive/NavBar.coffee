@@ -12,5 +12,6 @@ angular.module("grapes.directives").directive "navBar", ->
     scope.tapTab = (tab) -> 
       $('nav.bar-tab div.tab-item.active').removeClass 'active'
       $('#' + tab.id).addClass 'active'
-      window.location.hash = tab.url
+      if tab.fn then tab.fn() else window.location.hash = tab.url
+      return true
     return

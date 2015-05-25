@@ -14,6 +14,7 @@
     "id": "profile",
     "text": "我的",
     "url": "#/user_console",
-    "icon": "icon-person"
+    "icon": "icon-person",
+    "fn": "checkLogin"
   }
 ]

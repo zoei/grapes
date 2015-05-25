@@ -65,7 +65,7 @@ var tasks = {
         return gulp.src(['./app/js/**/*.js'])
             .pipe(angularFileSort())
             .pipe(concat('grapes.js'))
-            // .pipe(uglify())
+            .pipe(uglify())
             .pipe(gulp.dest('./build/www/js'));
     },
     coffee2js: function() {

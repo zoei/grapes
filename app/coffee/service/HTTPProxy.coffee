@@ -4,7 +4,6 @@ angular.module("grapes.services").factory "HTTPProxy", [
   ($resource, Extends) ->
     return init: (config) ->
       url = undefined
-      resource = undefined
       config = config or {}
       switch config.way
         when "jsonp"
@@ -25,8 +24,7 @@ angular.module("grapes.services").factory "HTTPProxy", [
             method: "GET"
 
           url = "./php/jsonpproxy.php"
-      resource = $resource(url, {},
+      $resource(url, {},
         request: config
       )
-      resource
 ]

@@ -1,7 +1,8 @@
 angular.module("grapes.services").factory "GrapesServ", [
   "HTTPProxy"
   "Formator"
-  (HTTPProxy, Formator) ->
+  "$resource"
+  (HTTPProxy, Formator, $resource) ->
     factory = {}
     way = "ajax" # jsonp/server
 
@@ -17,7 +18,7 @@ angular.module("grapes.services").factory "GrapesServ", [
         result.data
 
       request =
-        url: "http://happymuslim.net/wx/db.php"
+        url: "http://happymuslim.net/grapes/db/db.php"
         params: defaultParams
         postData: {}
         headers:
@@ -48,7 +49,7 @@ angular.module("grapes.services").factory "GrapesServ", [
         result.data
 
       request =
-        url: "http://happymuslim.net/wx/db.php"
+        url: "http://happymuslim.net/grapes/db/db.php"
         params: defaultParams
         postData: {}
         headers:
@@ -79,7 +80,7 @@ angular.module("grapes.services").factory "GrapesServ", [
         result.data
 
       request =
-        url: "http://happymuslim.net/wx/db.php"
+        url: "http://happymuslim.net/grapes/db/db.php"
         params: defaultParams
         postData: {}
         headers:
@@ -110,7 +111,7 @@ angular.module("grapes.services").factory "GrapesServ", [
         result.data
 
       request =
-        url: "http://happymuslim.net/wx/db.php"
+        url: "http://happymuslim.net/grapes/db/db.php"
         params: defaultParams
         postData: {}
         headers:
@@ -141,7 +142,7 @@ angular.module("grapes.services").factory "GrapesServ", [
         result.data
 
       request =
-        url: "http://happymuslim.net/wx/db.php"
+        url: "http://happymuslim.net/grapes/db/db.php"
         params: defaultParams
         postData: {}
         headers:
@@ -164,23 +165,23 @@ angular.module("grapes.services").factory "GrapesServ", [
       defaultParams =
         _id: 1
         api: "check_user"
-        user: params.username
-        password: params.userpass
         res: "json"
+        username: params.username
+        password: params.userpass
 
       transform = (result) ->
         result = JSON.parse(result)  if typeof result is "string"
         result.data
 
       request =
-        url: "http://happymuslim.net/wx/db.php"
+        url: "http://happymuslim.net/grapes/db/db.php"
         params: defaultParams
-        postData: {}
         headers:
           "X-Contract": true
 
       config =
         uri: request.url
+        method: 'POST'
         format: "json"
         isArray: false
         transformResponse: transform
@@ -211,7 +212,7 @@ angular.module("grapes.services").factory "GrapesServ", [
         result.data
 
       request =
-        url: "http://happymuslim.net/wx/db.php"
+        url: "http://happymuslim.net/grapes/db/db.php"
         params: defaultParams
         postData: {}
         headers:
@@ -243,7 +244,7 @@ angular.module("grapes.services").factory "GrapesServ", [
         result.data
 
       request =
-        url: "http://happymuslim.net/wx/db.php"
+        url: "http://happymuslim.net/grapes/db/db.php"
         params: defaultParams
         postData: {}
         headers:
@@ -282,7 +283,7 @@ angular.module("grapes.services").factory "GrapesServ", [
         result.data
 
       request =
-        url: "http://happymuslim.net/wx/db.php"
+        url: "http://happymuslim.net/grapes/db/db.php"
         params: defaultParams
         postData: {}
         headers:
@@ -320,7 +321,7 @@ angular.module("grapes.services").factory "GrapesServ", [
         result.data
 
       request =
-        url: "http://happymuslim.net/wx/db.php"
+        url: "http://happymuslim.net/grapes/db/db.php"
         params: defaultParams
         postData: {}
         headers:

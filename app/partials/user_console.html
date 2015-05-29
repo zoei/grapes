@@ -1,9 +1,10 @@
 <g-view id="user-console">
   <scrollable show-scrollbar="true" scroller-id="s1" class="content">
     <ul class="table-view">
-      <li hm-tap="modUser(user)" class="table-view-cell media">
+      <li class="table-view-cell table-view-divider"></li>
+      <li hm-tap="modUser(user)" class="table-view-cell media user-brief">
         <div class="headicon" style="background-image:url({{user.headicon}})"></div>
-        <span class="navigate-right">
+        <span class="">
           <span class="media-body">
             {{user.nickname}}
             <p>{{user.username}}</p>
@@ -11,8 +12,7 @@
           </span>
         </span>
       </li>
-    </ul>
-    <ul class="table-view">
+      <li class="table-view-cell table-view-divider"></li>
       <li class="table-view-cell media">
         <a class="navigate-right">
           <span class="media-object pull-left icon icon-trash"></span>

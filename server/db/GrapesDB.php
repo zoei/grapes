@@ -142,9 +142,7 @@ class GrapesDB {
     public function getActivityDetail($activityId){
         $result = mysql_query("SELECT * FROM `grapes_activities` WHERE activity_id = ".$activityId);
 
-            Logger::log(0);
         if($row = mysql_fetch_array($result)){
-            Logger::log(1);
             $activity = array(
                 'id'=>$row['activity_id'],
                 'title'=>$row['activity_title'],

@@ -3,7 +3,9 @@ angular.module("grapes.controllers").controller "UserConsoleCtrl", [
   "$rootScope"
   "UserServ"
   ($scope, $rootScope, UserServ) ->
-    window.location.hash = "#/user_login" unless $rootScope.currentUser
+    unless $rootScope.tokenInfo?.access_token
+      window.location.hash = "#/user_login"
+      return
 
     $scope.user = UserServ.getUser
       user: $rootScope.currentUser

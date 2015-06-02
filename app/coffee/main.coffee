@@ -35,3 +35,9 @@ angular.module("grapes", [
       controller: "SettingCtrl"
     ).otherwise redirectTo: "/home"
 ]
+
+# angular.module('grapes').config [
+#   '$httpProvider'
+#   ($http) ->
+#     $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
+# ]

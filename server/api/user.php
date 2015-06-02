@@ -4,6 +4,9 @@ require_once "../auth/server.php";
 require_once "../db/GrapesDB.php";
 require_once "../util/log.php";
 
+
+Logger::log("\r\n=========== user.php start ===========");
+
 if (!$server->verifyResourceRequest(OAuth2_Request::createFromGlobals(), new OAuth2_Response())) {
     $server->getResponse()->send();
     die;
@@ -17,11 +20,10 @@ define("DB_NAME", "happymuslim");
 $result = array();
 $result["_id"] = $_REQUEST['_id'];
 
+
 $grapesDB = new GrapesDB(HOST, USER_NAME, USER_PASS, DB_NAME);
 
-$api = $_REQUEST['api'];
-
-switch ($api){
+switch ($_REQUEST['api']){
     case "check_user":
         Logger::log('check_user');
         $code = $grapesDB->checkUser($_REQUEST['username'], $_REQUEST['password']);
@@ -62,5 +64,3 @@ if($res_type == 'jsonp'){
 } else {
     echo json_encode($result);
 }
-
-?>

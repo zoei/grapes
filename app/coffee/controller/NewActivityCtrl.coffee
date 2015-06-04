@@ -2,7 +2,8 @@ angular.module("grapes.controllers").controller "NewActivityCtrl", [
   "$scope"
   "$rootScope"
   "GrapesServ"
-  ($scope, $rootScope, GrapesServ) ->
+  '$http'
+  ($scope, $rootScope, GrapesServ, $http) ->
     # window.location.hash = "#/user_login"  unless $rootScope.currentUser
     $scope.setTitle
       title: "Create Activity"
@@ -115,4 +116,61 @@ angular.module("grapes.controllers").controller "NewActivityCtrl", [
         return
 
       return
+
+    $scope.mapSearch = ->
+      mapModal = $ '#mapModal'
+      self = $scope
+
+      maploaded = ->
+        coords = 
+          longitude: 121.4683
+          latitude: 31.2186
+
+        position = new AMap.LngLat coords.longitude, coords.latitude
+
+        self.map = new AMap.Map "l-map",
+          view: new AMap.View2D
+            center:position
+            zoom:14
+            rotation:0
+          lang:"zh_cn"
+
+        self.map.plugin ['AMap.Scale'], ->
+          self.map.addControl(new AMap.Scale())
+
+        searchPoi()
+
+        return
+
+      setMap = (loc) ->
+        self.map.setZoomAndCenter 16, new AMap.LngLat(loc.lng, loc.lat)
+        marker = new AMap.Marker map: self.map,
+          position: new AMap.LngLat(loc.lng, loc.lat)
+
+      searchPoi = ->
+        AMap.service ["AMap.PlaceSearch"], ->
+          search = new AMap.PlaceSearch
+            pageIndex:1,
+            pageSize:10,
+            city: "上海"
+          search.search self.activity.address, (status, result) ->
+            if status is 'complete' and result.info is 'OK'
+              setMap result.poiList.pois[0].location
+            return
+          return
+        return
+
+      if not AMap?
+        $http.jsonp('http://webapi.amap.com/maps?v=1.3&key=bc2d8e1027a1b4baa9d05b421ba7c840&callback=JSON_CALLBACK').
+          success(maploaded).
+          error(maploaded)
+        return
+
+      if not $scope.map?
+        maploaded()
+        return
+
+      searchPoi()
+
+    return
 ]

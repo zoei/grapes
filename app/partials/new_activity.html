@@ -7,10 +7,6 @@
         <input type="text" ng-model="activity.images" placeholder="Enter Pic">
       </div>
       <div class="input-row">
-        <label>发起人</label>
-        <input type="text" ng-model="activity.planner" placeholder="Enter Planner">
-      </div>
-      <div class="input-row">
         <label>标题</label>
         <input type="text" ng-model="activity.title" placeholder="Enter Title">
       </div>
@@ -31,7 +27,9 @@
         <input type="text" ng-model="activity.time" placeholder="Enter time">
       </div>
       <div class="input-row">
-        <label>Address</label>
+        <label>
+          <a href="#mapModal" hm-tap="mapSearch()">Address</a>
+        </label>
         <input type="text" ng-model="activity.address" placeholder="Enter address">
       </div>
       <div class="input-row">
@@ -54,5 +52,15 @@
       <button type="button" hm-tap="save()" class="btn btn-default">Save</button>
     </form>
   </scrollable>
+  <div id="mapModal" class="modal">
+    <header class="bar bar-nav">
+      <a class="icon icon-close pull-left" href="#mapModal"></a>
+      <input type="search" ng-model="activity.address">
+      <a class="icon icon-search pull-right" hm-tap="mapSearch()"></a>
+    </header>
+    <div class="content">
+      <div id="l-map"></div>
+    </div>
+  </div>
   <nav-bar ds="barTabs" active="new"></nav-bar>
 </g-view>

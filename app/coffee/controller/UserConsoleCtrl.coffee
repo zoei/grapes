@@ -9,5 +9,8 @@ angular.module("grapes.controllers").controller "UserConsoleCtrl", [
 
     $scope.user = UserServ.getUser
       user: $rootScope.currentUser
-      access_token: $rootScope.tokenInfo.access_token
+      access_token: $rootScope.tokenInfo.access_token,
+      (result) ->
+      (error) ->
+        console.log error
 ]

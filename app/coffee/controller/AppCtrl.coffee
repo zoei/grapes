@@ -46,4 +46,5 @@ angular.module("grapes.controllers").controller "AppCtrl", [
     #   console.log 'routeChangeSuccess'
     # $scope.$on '$stateChangeSuccess', ->
     #   console.log 'stateChangeSuccess'
+
 ]

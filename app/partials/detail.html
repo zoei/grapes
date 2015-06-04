@@ -1,24 +1,40 @@
 <g-view id="detail">
-  <scrollable show-scrollbar="true" scroller-id="s1" class="content"> 
-    <a href="#">{{actTitle}}</a>
-    <input class="btn btn-default pull-right" type="button" hm-tap="join()" ng-show="showJoin()" value="Join">
-    <p>{{category}}</p>
-    <p>{{address}}</p>
-    <p>{{fee}}</p>
-    <p>{{planner}}</p>
-    <p>{{time}}</p>
-    <hr/>
+  <header class="bar bar-nav">
+    <a class="btn btn-link btn-nav pull-left" href="#home">
+      <span class="icon icon-left-nav"></span>
+    </a>
+    <h1 class="title">活动详情</h1>
+  </header>
+  <scrollable show-scrollbar="true" scroller-id="s1" class="content">
+    <div class="area image-area">
+      <button class="btn btn-positive pull-right join" hm-tap="join()" ng-show="showJoin()">报名</button>
+      <img class="img-responsive center-block" ng-src="{{images}}">
+    </div>
+    <h4 class="area">{{actTitle}}</h4>
+    <p>类别：{{category}}</p>
+    <p>费用：{{fee}}</p>
+    <p>时间：{{time}}</p>
+    <p>发起：{{planner}}</p>
+    <a href="#mapModal" hm-tap="tapAddress()">地点：{{address}}</a>
     <div class="list-group" show-scrollbar="true" class="list-group">
         <li ng-repeat="item in items" class="list-group-item">
             <p>{{item.title}}</p>
-            <p>{{item.place}}</p>
-            <p>{{item.content}}</p>
-            <p>{{item.lasting}}</p>
-            <p>{{item.status}}</p>
+            <p>地点：{{item.place}}</p>
+            <p>内容：{{item.content}}</p>
+            <p>持续时间：{{item.lasting}}</p>
         </li>
     </div>
     <li ng-repeat="member in members" class="">
         <a href="#/user">{{member.nickname}}&nbsp;</a>
     </li>
   </scrollable>
+  <div id="mapModal" class="modal">
+    <header class="bar bar-nav">
+      <a class="icon icon-close pull-right" href="#mapModal"></a>
+      <h1 class="title">查看地址</h1>
+    </header>
+    <div class="content">
+        <div id="l-map"></div>
+    </div>
+  </div>
 </g-view>

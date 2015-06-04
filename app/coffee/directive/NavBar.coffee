@@ -9,6 +9,9 @@ angular.module("grapes.directives").directive "navBar", ->
   replace: true
   link: (scope, element, attrs) ->
     scope.$navbartabs = scope[attrs['ds']]
+    active = attrs['active']
+    for tab in scope.$navbartabs
+      tab.cls = if active is tab.id then 'active' else ''
     scope.tapTab = (tab) -> 
       $('nav.bar-tab div.tab-item.active').removeClass 'active'
       $('#' + tab.id).addClass 'active'

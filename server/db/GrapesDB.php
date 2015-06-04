@@ -151,6 +151,7 @@ class GrapesDB {
                 'time'=>$row['activity_time'],
                 'fee'=>$row['activity_fee'],
                 'planner'=>$row['activity_planner'], 
+                'images' =>$row['activity_image_urls'],
                 'status'=>$row['activity_status']
             );
 
@@ -174,6 +175,7 @@ class GrapesDB {
                 'time'=>$row['activity_time'],
                 'fee'=>$row['activity_fee'],
                 'planner'=>$row['activity_planner'], 
+                'images' =>$row['activity_image_urls'],
                 'status'=>$row['activity_status']
             );
         }
@@ -206,7 +208,8 @@ class GrapesDB {
                 'address'=>$row['activity_address'], 
                 'time'=>$row['activity_time'],
                 'fee'=>$row['activity_fee'],
-                'planner'=>$row['activity_planner'], 
+                'planner'=>$row['activity_planner'],
+                'images' =>$row['activity_image_urls'],
                 'status'=>$row['activity_status']
             ));
         }
@@ -227,6 +230,7 @@ class GrapesDB {
                 'time'=>$row['activity_time'],
                 'fee'=>$row['activity_fee'],
                 'planner'=>$row['activity_planner'], 
+                'images' =>$row['activity_image_urls'],
                 'status'=>$row['activity_status']
             ));
         }
@@ -247,6 +251,7 @@ class GrapesDB {
                 'time'=>$row['activity_time'],
                 'fee'=>$row['activity_fee'],
                 'planner'=>$row['activity_planner'], 
+                'images' =>$row['activity_image_urls'],
                 'status'=>$row['activity_status']
             ));
         }

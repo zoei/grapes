@@ -21,6 +21,7 @@ var tasks = {
             .pipe(gulp.dest('./build/www'));
 
         gulp.src([
+                // './app/css/bootstrap.customize.min.css',
                 './app/css/ratchet.min.css'
                 // './app/css/ratchet-theme-ios.min.css'
             ])
@@ -36,19 +37,17 @@ var tasks = {
         gulp.src([
                 './app/lib/b64.js',
                 './app/lib/jquery-2.0.3.min.js',
-                './app/lib/hammer.js',
-                // './app/lib/jquery.hammer.js',
                 './app/lib/jquery.ba-resize.js',
+                './app/lib/hammer.js',
                 './app/lib/iscroll.js',
                 './app/lib/ratchet.min.js',
-                // './app/lib/push.js',
                 './app/lib/angular.js',
                 './app/lib/angular-route.js',
                 './app/lib/angular-resource.js',
                 './app/lib/angular-hammer.js',
             ])
             .pipe(concat('deps.js'))
-            // .pipe(uglify())
+            .pipe(uglify())
             .pipe(gulp.dest('./build/www/js'));
     },
     tpl: function() {

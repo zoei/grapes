@@ -1,5 +1,8 @@
 <g-view id="new-activity">
-  <title-bar></title-bar>
+  <header class="bar bar-nav">
+    <h1 class="title">新建活动</h1>
+    <button type="button" hm-tap="save()" class="btn btn-positive pull-right">保存</button>
+  </header>
   <scrollable show-scrollbar="true" scroller-id="s1" class="content">
     <form class="input-group">
       <div class="input-row">
@@ -10,57 +13,49 @@
         <label>标题</label>
         <input type="text" ng-model="activity.title" placeholder="Enter Title">
       </div>
-      <div>
+      <div class="input-row">
         <label>分类</label>
         <select ng-model="activity.category" ng-options="ActivityCategories.indexOf(o) as o for o in ActivityCategories" ng-change="categoryChange()">
           <option value="">请选择</option>
         </select>
       </div>
-      <div>
-        <label>Fee</label>
+      <div class="input-row">
+        <label>费用</label>
         <select ng-model="activity.fee" ng-options="fees.indexOf(o) as o for o in fees" ng-change="feeChange()">
           <option value="">请选择</option>
         </select>
       </div>
       <div class="input-row">
-        <label>Time</label>
+        <label>时间</label>
         <input type="text" ng-model="activity.time" placeholder="Enter time">
       </div>
       <div class="input-row">
         <label>
-          <a href="#mapModal" hm-tap="mapSearch()">Address</a>
+          <a href="#mapModal" hm-tap="mapSearch()">地点</a>
         </label>
         <input type="text" ng-model="activity.address" placeholder="Enter address">
       </div>
-      <div class="input-row">
-        <label>Content</label>
+      <div class="input-rows">
+        <label>内容</label>
         <textarea ng-model="activity.content" rows="3"></textarea>
       </div>
-      <div>
-        <label>Scope</label>
-        <li ng-repeat="scope in ActivityScopes">
+      <div class="input-rows">
+        <label>权限</label>
+        <div ng-repeat="scope in ActivityScopes">
           <input type="radio" ng-model="activity.scope" name="optionsScope" value="{{scope.value}}" ng-checked="{{scope.checked}}">{{scope.text}}
-        </li>
+        </div>
       </div>
 
-      <button type="button" hm-tap="addItem()" class="btn btn-default">+</button>
-        
-      <li ng-repeat="item in items" class="list-group-item">
-        <div activity-item data="item"></div>
-      </li>
+      <div ng-repeat="item in items" class="act-item" activity-item data="item">
+        {{$index}}
+      </div>
 
-      <button type="button" hm-tap="save()" class="btn btn-default">Save</button>
+      <button type="button" hm-tap="addItem()" class="btn btn-primary btn-block" style="margin-top: 10px">添加项目</button>
+
     </form>
   </scrollable>
-  <div id="mapModal" class="modal">
-    <header class="bar bar-nav">
-      <a class="icon icon-close pull-left" href="#mapModal"></a>
-      <input type="search" ng-model="activity.address">
-      <a class="icon icon-search pull-right" hm-tap="mapSearch()"></a>
-    </header>
-    <div class="content">
-      <div id="l-map"></div>
-    </div>
-  </div>
+
+  <div ng-include="'partials/components/map_modal.html'"></div>
+
   <nav-bar ds="barTabs" active="new"></nav-bar>
 </g-view>

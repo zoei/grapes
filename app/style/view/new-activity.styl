@@ -5,17 +5,47 @@ g-view#new-activity
   form
     padding: 10px
     
-  #mapModal
-  .content
-    bottom: 0
-    
-    .bar
-      input
-        width: auto
-        margin: 6px 15px;
-
-    #l-map
-      width: 100%
-      height: 100%
+    .input-row
+      
+      select
+        width: 65%
+        margin: 5px 0
+        
+    .input-rows
+      height: auto
       overflow: hidden
-      margin:0
+      border-bottom: 1px solid #ddd
+
+      label
+        float: left
+        width: 35%
+        padding: 8px 15px
+        font-family: "Helvetica Neue",Helvetica,sans-serif
+        line-height: 1.1
+        
+    .act-item
+      margin: 10px
+    
+  #mapModal
+
+    .bar-header-secondary
+
+      .tips
+        background-color: white
+        font-size: 14px
+        padding: 5px
+        line-height: 20px
+
+      a
+        position: absolute
+        right: 5px
+        top: 0
+
+    .content
+      bottom: 0
+
+      #l-map
+        width: 100%
+        height: 100%
+        overflow: hidden
+        margin:0

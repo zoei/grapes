@@ -117,35 +117,47 @@ angular.module("grapes.controllers").controller "NewActivityCtrl", [
 
       return
 
-    $scope.mapSearch = ->
+    $scope.mapSearch = (address) ->
+      address = address || $scope.activity.address
       mapModal = $ '#mapModal'
       self = $scope
 
       maploaded = ->
-        coords = 
-          longitude: 121.4683
-          latitude: 31.2186
-
-        position = new AMap.LngLat coords.longitude, coords.latitude
-
         self.map = new AMap.Map "l-map",
           view: new AMap.View2D
-            center:position
             zoom:14
             rotation:0
           lang:"zh_cn"
 
+        if !address
+          AMap.service ["AMap.CitySearch"], ->
+            citysearch = new AMap.CitySearch()
+            citysearch.getLocalCity (status, result) ->
+              if status == 'complete' and result.info == 'OK'
+                if result and result.city and result.bounds
+                  self.map.setBounds result.bounds
+
         self.map.plugin ['AMap.Scale'], ->
-          self.map.addControl(new AMap.Scale())
+          self.map.addControl new AMap.Scale()
+
+        self.map.plugin ["AMap.ToolBar"], ->
+          self.map.addControl new AMap.ToolBar()
+
+        $('#mapModal input').on 'keyup', self.autoComplete
+        $('#mapModal input').on 'blur', ->
+          self.tips = []
 
         searchPoi()
 
         return
 
       setMap = (loc) ->
-        self.map.setZoomAndCenter 16, new AMap.LngLat(loc.lng, loc.lat)
-        marker = new AMap.Marker map: self.map,
-          position: new AMap.LngLat(loc.lng, loc.lat)
+        self.map.clearMap()
+        point = new AMap.LngLat loc.lng, loc.lat
+        self.map.setZoomAndCenter 16, point
+        marker = new AMap.Marker
+          map: self.map,
+          position: point
 
       searchPoi = ->
         AMap.service ["AMap.PlaceSearch"], ->
@@ -153,7 +165,7 @@ angular.module("grapes.controllers").controller "NewActivityCtrl", [
             pageIndex:1,
             pageSize:10,
             city: "上海"
-          search.search self.activity.address, (status, result) ->
+          search.search address, (status, result) ->
             if status is 'complete' and result.info is 'OK'
               setMap result.poiList.pois[0].location
             return
@@ -171,6 +183,28 @@ angular.module("grapes.controllers").controller "NewActivityCtrl", [
         return
 
       searchPoi()
+
+    $scope.tips = []
+
+    $scope.autoComplete = ->
+      keywords = $('#mapModal input').val()
+      $scope.map.plugin ["AMap.Autocomplete"], ->
+        auto = new AMap.Autocomplete city: ''
+
+        if keywords.length > 0
+          AMap.event.addListener auto, 'complete', (result) ->
+            $scope.tips = result.tips
+          auto.search keywords
+          return
+        return
+      return
+
+    # $scope.$watch 'activity.address', $scope.autoComplete
+    $scope.tapTip = (tip) ->
+      $('#mapModal input').blur()
+      $scope.activity.address = tip.name
+      $scope.tips = []
+      $scope.mapSearch(tip.name)
 
     return
 ]

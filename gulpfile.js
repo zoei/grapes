@@ -6,7 +6,21 @@ var gulp = require('gulp'),
     js2coffee = require('gulp-js2coffee'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
+    program = require('commander'),
     angularFileSort = require('gulp-angular-filesort');
+
+var need_uglify = false;
+
+(function setup(){
+    program
+        .version('0.0.1')
+        .option('-p, --product', 'product mode')
+        .parse(process.argv);
+
+    if(program.product){
+        need_uglify = true;
+    }
+})();
 
 var tasks = {
     clean: function() {
@@ -34,7 +48,9 @@ var tasks = {
         gulp.src('./app/data/**/*.*')
             .pipe(gulp.dest('./build/www/data'));
 
-        gulp.src([
+    },
+    lib: function() {
+        var stream = gulp.src([
                 './app/lib/b64.js',
                 './app/lib/jquery-2.0.3.min.js',
                 './app/lib/jquery.ba-resize.js',
@@ -46,9 +62,13 @@ var tasks = {
                 './app/lib/angular-resource.js',
                 './app/lib/angular-hammer.js',
             ])
-            .pipe(concat('deps.js'))
-            .pipe(uglify())
-            .pipe(gulp.dest('./build/www/js'));
+            .pipe(concat('deps.js'));
+
+        if (need_uglify) {
+            stream = stream.pipe(uglify());
+        }
+
+        return stream.pipe(gulp.dest('./build/www/js'));
     },
     tpl: function() {
         return gulp.src('./app/partials/**/*.html')
@@ -60,21 +80,25 @@ var tasks = {
             .pipe(concat('grapes.css'))
             .pipe(gulp.dest('./build/www/css'));
     },
+    coffee: function() {
+        var stream = gulp.src(['./app/coffee/**/*.coffee'])
+            .pipe(coffee({
+                bare: true
+            }).on('error', gutil.log))
+            .pipe(angularFileSort())
+            .pipe(concat('grapes.js'));
+
+        if (need_uglify) {
+            stream = stream.pipe(uglify());
+        }
+
+        return stream.pipe(gulp.dest('./build/www/js'));
+    },
     js: function() {
         return gulp.src(['./app/js/**/*.js'])
             .pipe(angularFileSort())
             .pipe(concat('grapes.js'))
             .pipe(uglify())
-            .pipe(gulp.dest('./build/www/js'));
-    },
-    coffee2js: function() {
-        return gulp.src(['./app/coffee/**/*.coffee'])
-            .pipe(coffee({
-                bare: true
-            }).on('error', gutil.log))
-            .pipe(angularFileSort())
-            .pipe(concat('grapes.js'))
-            // .pipe(uglify())
             .pipe(gulp.dest('./build/www/js'));
     },
     js2coffee: function() {
@@ -88,8 +112,10 @@ gulp.task('clean', tasks.clean);
 gulp.task('tpl', tasks.tpl);
 gulp.task('res', function(){return tasks.res('index')});
 gulp.task('res_app', function(){return tasks.res('index_app')});
-gulp.task('stylus', tasks.stylus);
-gulp.task('coffee2js', tasks.coffee2js);
+gulp.task('styl', tasks.stylus);
+gulp.task('coffee', tasks.coffee);
 gulp.task('js2coffee', tasks.js2coffee);
-gulp.task('default', ['clean', 'coffee2js', 'stylus', 'tpl', 'res']);
-gulp.task('app', ['clean', 'coffee2js', 'stylus', 'tpl', 'res_app']);
+gulp.task('lib', tasks.lib);
+
+gulp.task('default', ['clean', 'coffee', 'lib', 'styl', 'tpl', 'res']);
+gulp.task('app', ['clean', 'coffee', 'lib', 'styl', 'tpl', 'res_app']);

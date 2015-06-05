@@ -74,6 +74,9 @@ angular.module("grapes.controllers").controller "DetailCtrl", [
         self.map.plugin ['AMap.Scale'], ->
           self.map.addControl(new AMap.Scale())
 
+        self.map.plugin ["AMap.ToolBar"], ->
+          self.map.addControl new AMap.ToolBar()
+
         searchPoi()
 
         return

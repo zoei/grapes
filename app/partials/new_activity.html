@@ -14,7 +14,9 @@
         <input type="text" ng-model="activity.title" placeholder="Enter Title">
       </div>
       <div class="input-row">
-        <label>分类</label>
+        <label>
+          <a href="#mapModal" hm-tap="categorySearch()">分类</a>
+        </label>
         <select ng-model="activity.category" ng-options="ActivityCategories.indexOf(o) as o for o in ActivityCategories" ng-change="categoryChange()">
           <option value="">请选择</option>
         </select>

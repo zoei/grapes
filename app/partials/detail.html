@@ -28,11 +28,19 @@
         <a href="#/user">{{member.nickname}}&nbsp;</a>
     </li>
   </scrollable>
+
   <div id="mapModal" class="modal">
     <header class="bar bar-nav">
       <a class="icon icon-close pull-left" href="#mapModal"></a>
       <h1 class="title">查看地址</h1>
     </header>
+    <div class="bar bar-standard bar-header-secondary">
+      <div class="segmented-control">
+        <a class="control-item active">驾车</a>
+        <a class="control-item">公交</a>
+        <a class="control-item">步行</a>
+      </div>
+    </div>
     <div class="content">
         <div id="l-map"></div>
     </div>

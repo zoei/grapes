@@ -15,7 +15,7 @@
       </div>
       <div class="input-row">
         <label>
-          <a href="#mapModal" hm-tap="categorySearch()">分类</a>
+          <a href="#businessModal" hm-tap="categorySearch()">分类</a>
         </label>
         <select ng-model="activity.category" ng-options="ActivityCategories.indexOf(o) as o for o in ActivityCategories" ng-change="categoryChange()">
           <option value="">请选择</option>
@@ -58,6 +58,8 @@
   </scrollable>
 
   <div ng-include="'partials/components/map_modal.html'"></div>
+
+  <business-modal></business-modal>
 
   <nav-bar ds="barTabs" active="new"></nav-bar>
 </g-view>

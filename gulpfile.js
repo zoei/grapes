@@ -52,6 +52,7 @@ var tasks = {
     lib: function() {
         var stream = gulp.src([
                 './app/lib/b64.js',
+                './app/lib/crypto.js',
                 './app/lib/jquery-2.0.3.min.js',
                 './app/lib/jquery.ba-resize.js',
                 './app/lib/hammer.js',

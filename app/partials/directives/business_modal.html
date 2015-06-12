@@ -1,0 +1,54 @@
+<div id="businessModal" class="modal">
+  <header class="bar bar-nav">
+    <a class="icon icon-close pull-left" href="#businessModal"></a>
+    <h1 class="title">选取地点</h1>
+  </header>
+  <div class="bar bar-header-secondary">
+    <a href="#regionPopover" class="btn btn-link">区域
+      <span class="icon icon-caret"></span>
+    </a>
+    <a href="#categoryPopover" class="btn btn-link">分类
+      <span class="icon icon-caret"></span>
+    </a>
+    <a href="#orderPopover" class="btn btn-link">排序
+      <span class="icon icon-caret"></span>
+    </a>
+    <a class="btn btn-link" href="#filterPopover">筛选
+      <span class="icon icon-caret"></span>
+    </a>
+  </div>
+  <scrollable show-scrollbar="true" scroller-id="s1" class="content">
+    <ul class="table-view">
+      <li ng-repeat="business in businesses" hm-tap="onActTap(act)" class="table-view-cell media">
+        <a class="navigate-right">
+          <img class="media-object pull-left business-photo" ng-src="{{business.photo_url}}">
+          <div class="media-body">
+            {{business.name}}
+            <p>{{business.address}}</p>
+            <p>{{business.tel}}</p>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </scrollable>
+  <div id="regionPopover" class="popover">
+    <div ng-repeat="region in regions" hm-tap="regionChanged(region)" href="#regionPopover">
+      {{region.district_name}}
+    </div>
+  </div>
+  <div id="categoryPopover" class="popover">
+    <div ng-repeat="category in categories" hm-tap="categoryChanged(category)" href="#categoryPopover">
+      {{category.category_name}}
+    </div>
+  </div>
+  <div id="orderPopover" class="popover">
+    <div ng-repeat="order in orders" hm-tap="orderChanged(order)" href="#orderPopover">
+      {{order.order_name}}
+    </div>
+  </div>
+  <div id="filterPopover" class="popover">
+    <div ng-repeat="filter in filters" hm-tap="filterChanged(filter)" href="#filterPopover">
+      {{filter.filter_name}}
+    </div>
+  </div>
+</div>

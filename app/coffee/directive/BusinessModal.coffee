@@ -14,6 +14,11 @@ angular.module("grapes.directives").directive "businessModal", ->
     $scope.category = category_name: ''
     $scope.subCategory = category_name: ''
 
+    $scope.onTapBusiness = (business)->
+      $scope.business = business
+      $('#businessDetailModal').addClass('active')
+      return
+
     $scope.getBusiness = ->
       params = {}
       params.city = $scope.city if $scope.city

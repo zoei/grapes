@@ -19,7 +19,7 @@
   </div>
   <scrollable show-scrollbar="true" scroller-id="s1" class="content">
     <ul class="table-view">
-      <li ng-repeat="business in businesses" hm-tap="onActTap(act)" class="table-view-cell media">
+      <li ng-repeat="business in businesses" href="#businessDetailModal" hm-tap="onTapBusiness(business)" class="table-view-cell media business-item" style="display: list-item;text-align: -webkit-match-parent;">
         <a class="navigate-right">
           <img class="media-object pull-left business-photo" ng-src="{{business.photo_url}}">
           <div class="media-body">
@@ -51,4 +51,5 @@
       {{filter.filter_name}}
     </div>
   </div>
+  <div ng-include="'partials/directives/business_detail_modal.html'"></div>
 </div>

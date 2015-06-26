@@ -14,6 +14,14 @@ angular.module("grapes.directives").directive "businessModal", ->
     $scope.category = category_name: ''
     $scope.subCategory = category_name: ''
 
+    hidePopover = (selector)->
+      backdrop = $ '.backdrop'
+      popover = $ selector
+      return unless backdrop.length > 0 and popover.length > 0
+      popover.removeClass 'visible'
+      popover.hide()
+      popover.parent()[0].removeChild backdrop[0]
+
     $scope.onTapBusiness = (business)->
       $scope.business = business
       $('#businessDetailModal').addClass('active')
@@ -28,10 +36,12 @@ angular.module("grapes.directives").directive "businessModal", ->
       $scope.businesses = BusinessServ.getBusiness params
 
     $scope.regionChanged = (region)->
+      hidePopover '#regionPopover'
       $scope.region = region
       $scope.getBusiness()
 
     $scope.categoryChanged = (category)->
+      hidePopover '#categoryPopover'
       $scope.category = category
       $scope.subcategories = $scope.category.subcategories;
       $scope.subCategory = $scope.subcategories[0]

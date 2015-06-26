@@ -57,7 +57,7 @@ var tasks = {
                 './app/lib/jquery.ba-resize.js',
                 './app/lib/hammer.js',
                 './app/lib/iscroll.js',
-                './app/lib/ratchet.min.js',
+                './app/lib/ratchet.js',
                 './app/lib/angular.js',
                 './app/lib/angular-route.js',
                 './app/lib/angular-resource.js',

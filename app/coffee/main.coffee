@@ -18,6 +18,9 @@ angular.module("grapes", [
     ).when("/detail/:act_id",
       templateUrl: "partials/detail.html"
       controller: "DetailCtrl"
+    ).when("/messages",
+      templateUrl: "partials/messages.html"
+      controller: "MessagesCtrl"
     ).when("/user_login",
       templateUrl: "partials/login.html"
       controller: "UserLoginCtrl"
@@ -27,6 +30,12 @@ angular.module("grapes", [
     ).when("/user_console",
       templateUrl: "partials/user_console.html"
       controller: "UserConsoleCtrl"
+    ).when("/user_joined",
+      templateUrl: "partials/user_joined.html"
+      controller: "UserJoinedCtrl"
+    ).when("/users",
+      templateUrl: "partials/users.html"
+      controller: "UsersCtrl"
     ).when("/new_activity",
       templateUrl: "partials/new_activity.html"
       controller: "NewActivityCtrl"

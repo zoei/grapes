@@ -1,5 +1,5 @@
 <g-view id="user-console">
-  <scrollable show-scrollbar="true" scroller-id="s1" class="content">
+  <scrollable show-scrollbar="true" scroller-id="s1" class="content with-footer">
     <ul class="table-view">
       <li class="table-view-cell table-view-divider"></li>
       <li hm-tap="modUser(user)" class="table-view-cell media user-brief">
@@ -22,7 +22,7 @@
         </a>
       </li>
       <li class="table-view-cell media">
-        <a class="navigate-right">
+        <a class="navigate-right" href="#user_joined">
           <span class="media-object pull-left icon icon-gear"></span>
           <div class="media-body">
             Joined
@@ -31,10 +31,19 @@
       </li>
       <li class="table-view-cell table-view-divider"></li>
       <li class="table-view-cell media">
-        <a class="navigate-right">
+        <a class="navigate-right" href="#users">
           <span class="media-object pull-left icon icon-pages"></span>
           <div class="media-body">
             Friends
+          </div>
+        </a>
+      </li>
+      <li class="table-view-cell table-view-divider"></li>
+      <li class="table-view-cell media">
+        <a class="navigate-right" href="#new_activity">
+          <span class="media-object pull-left icon icon-plus"></span>
+          <div class="media-body">
+            New Activity
           </div>
         </a>
       </li>

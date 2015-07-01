@@ -1,15 +1,15 @@
 [
   {
     "id": "home",
-    "text": "活动",
+    "text": "首页",
     "url": "#/home",
     "icon": "icon-home",
     "cls": "active"
   }, {
-    "id": "new",
-    "text": "发布",
-    "url": "#/new_activity",
-    "icon": "icon-plus"
+    "id": "messages",
+    "text": "消息",
+    "url": "#/messages",
+    "icon": "icon-pages",
   }, {
     "id": "profile",
     "text": "我的",

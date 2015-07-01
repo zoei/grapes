@@ -15,15 +15,15 @@ angular.module("grapes.controllers").controller "AppCtrl", [
     $scope.barTabs = [
       {
         id: "home",
-        text: "活动",
+        text: "首页",
         url: "#/home",
         icon: "icon-home",
         cls: "active"
       }, {
-        id: "new",
-        text: "发布",
-        url: "#/new_activity",
-        icon: "icon-plus"
+        id: "messages",
+        text: "消息",
+        url: "#/messages",
+        icon: "icon-pages"
       }, {
         id: "profile",
         text: "我的",
@@ -46,5 +46,18 @@ angular.module("grapes.controllers").controller "AppCtrl", [
     #   console.log 'routeChangeSuccess'
     # $scope.$on '$stateChangeSuccess', ->
     #   console.log 'stateChangeSuccess'
+
+    $scope.isAuthorized = ->
+      $rootScope.tokenInfo?.access_token
+
+    $scope.hasJoined = (act_id)->
+      return false  unless $rootScope.currentUser
+      return false  if not $rootScope.userActivities or not $rootScope.userActivities.length
+      i = 0
+      while i < $rootScope.userActivities.length
+        activity = $rootScope.userActivities[i]
+        return true if act_id is activity.id
+        i++
+      false
 
 ]

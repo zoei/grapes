@@ -1,0 +1,17 @@
+<g-view id="users" hm-swipeleft="swipePage('left')" hm-swiperight="swipePage('right')">
+  <header class="bar bar-nav">
+    <a class="btn btn-link btn-nav pull-left" href="#user_console">
+      <span class="icon icon-left-nav"></span>
+    </a>
+  </header>
+  <scrollable show-scrollbar="true" scroller-id="s1" class="content "> 
+    <ul class="table-view">
+      <li ng-repeat="user in users" hm-tap="selectUser(user)" class="table-view-cell media">
+        <div class="media-body">
+          {{user.nickname}}
+          <p>{{user.address}}</p>
+        </div>
+      </li>
+    </ul>
+  </scrollable>
+</g-view>

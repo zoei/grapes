@@ -4,7 +4,6 @@ require_once "../auth/server.php";
 require_once "../db/GrapesDB.php";
 require_once "../util/log.php";
 
-
 Logger::log("\r\n=========== user.php start ===========");
 
 if (!$server->verifyResourceRequest(OAuth2_Request::createFromGlobals(), new OAuth2_Response())) {
@@ -19,7 +18,6 @@ define("DB_NAME", "happymuslim");
 
 $result = array();
 $result["_id"] = $_REQUEST['_id'];
-
 
 $grapesDB = new GrapesDB(HOST, USER_NAME, USER_PASS, DB_NAME);
 

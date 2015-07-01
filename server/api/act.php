@@ -4,9 +4,13 @@ require_once "../auth/server.php";
 require_once "../db/GrapesDB.php";
 require_once "../util/log.php";
 
-if (!$server->verifyResourceRequest(OAuth2_Request::createFromGlobals(), new OAuth2_Response())) {
-    $server->getResponse()->send();
-    die;
+Logger::log("\r\n=========== act.php start ===========");
+
+function auth(){
+    if (!$server->verifyResourceRequest(OAuth2_Request::createFromGlobals(), new OAuth2_Response())) {
+        $server->getResponse()->send();
+        die;
+    }
 }
 
 define("HOST", "localhost");
@@ -19,9 +23,7 @@ $result["_id"] = $_REQUEST['_id'];
 
 $grapesDB = new GrapesDB(HOST, USER_NAME, USER_PASS, DB_NAME);
 
-$api = $_REQUEST['api'];
-
-switch ($api){
+switch ($_REQUEST['api']){
     case "act":
         Logger::log('act');
         $data = $grapesDB->getActivity($_REQUEST['act']);
@@ -89,6 +91,19 @@ switch ($api){
         $success = $grapesDB->addActivityItems(
             $_REQUEST['act'],
             json_decode($_REQUEST['items'])
+        );
+        $data = array("success"=>$success);
+        break;
+    case "get_act_msg":
+        Logger::log('get_act_msg');
+        $data = $grapesDB->getActivityMessages($_REQUEST['act'], $_REQUEST['count'], $_REQUEST['start']);
+        break;
+    case "add_act_msg":
+        Logger::log('add_act_msg');
+        $success = $grapesDB->addActivityMessage(
+            $_REQUEST['act'],
+            $_REQUEST['user'],
+            $_REQUEST['msg']
         );
         $data = array("success"=>$success);
         break;

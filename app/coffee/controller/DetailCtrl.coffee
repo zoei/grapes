@@ -3,8 +3,9 @@ angular.module("grapes.controllers").controller "DetailCtrl", [
   "$rootScope"
   "$routeParams"
   "GrapesServ"
+  "GrapesDBServ"
   '$http'
-  ($scope, $rootScope, $routeParams, GrapesServ, $http) ->
+  ($scope, $rootScope, $routeParams, GrapesServ, GrapesDBServ, $http) ->
     $scope.setTitle
       title: "Activity Detail"
       leftText: "Home"
@@ -15,20 +16,40 @@ angular.module("grapes.controllers").controller "DetailCtrl", [
 
       visible: true
 
-    $scope.activities = GrapesServ.getActivityDetail(
+    $scope.activities = GrapesServ.getActivityDetail
       act: $routeParams.act_id
-    , (act) ->
-      $scope.actTitle = act.title
-      $scope.address = act.address
-      $scope.planner = act.planner
-      $scope.images = act.images
-      $scope.time = act.time
-      $scope.status = act.status
-      $scope.fee = act.fee
-      $scope.items = act.items
-      return
-    )
-    $scope.members = GrapesServ.getActivityMembers(act: $routeParams.act_id)
+      (act)->
+        $scope.actId = $routeParams.act_id
+        $scope.actTitle = act.title
+        $scope.address = act.address
+        $scope.planner = act.planner
+        $scope.images = act.images
+        $scope.time = act.time
+        $scope.status = act.status
+        $scope.fee = act.fee
+        $scope.items = act.items
+        return
+
+    $scope.members = GrapesServ.getActivityMembers act: $routeParams.act_id
+
+    refreshMessages = ()->
+      $scope.messages = GrapesDBServ.getActivityMessage
+        act: $routeParams.act_id
+        count: 10
+        start: 0
+
+    refreshMessages()
+
+    $scope.comment = text: ''
+
+    $scope.addMessage = ->
+      GrapesDBServ.addActivityMessage
+        act: $routeParams.act_id
+        user: $rootScope.currentUser
+        msg: $scope.comment.text
+        access_token: $rootScope.tokenInfo.access_token
+      , refreshMessages
+
     $scope.join = ->
       GrapesServ.joinActivity
         act: $routeParams.act_id

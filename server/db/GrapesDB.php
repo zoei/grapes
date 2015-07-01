@@ -435,6 +435,44 @@ class GrapesDB {
             return true;
         }
     }
+
+    public function getActivityMessages($activity, $count, $start){
+        $result = mysql_query("SELECT * FROM `grapes_activity_discuss` WHERE activity=" .$activity ." ORDER BY create_time DESC LIMIT " .$start .", " .$count);
+        $message = array();
+
+        while($row = mysql_fetch_array($result)){
+            array_push($message, array(
+                'id'=>$row['id'],
+                'activity'=>$row['activity'],
+                'user'=>$row['user'],
+                'message'=>$row['message'], 
+                'time'=>$row['create_time']
+            ));
+        }
+
+        return $message;
+    }
+
+    public function addActivityMessage($activity, $user, $message){
+        $sql = "INSERT INTO grapes_activity_discuss (".
+            " activity,".
+            " user,".
+            " message".
+            " ) VALUES (".
+            $activity.",".
+            "'".$user."',".
+            "'".$message."'".
+            ")";
+        Logger::log($sql);
+        $result = mysql_query($sql);
+
+        if(!$result){
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 }
 
 ?>

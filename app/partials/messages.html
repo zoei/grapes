@@ -1,0 +1,18 @@
+<g-view id="messages" hm-swipeleft="swipePage('left')" hm-swiperight="swipePage('right')">
+  <header class="bar bar-nav">
+  </header>
+  <scrollable show-scrollbar="true" scroller-id="s1" class="content">
+    <ul class="table-view">
+      <li ng-repeat="message in messages" hm-tap="selectMessage(message)" class="table-view-cell media">
+        <a class="navigate-right">
+          <img class="media-object pull-left" ng-src="{{message.chatwith_icon}}">
+          <div class="media-body">
+            {{message.chatwith}}
+            <p>{{message.text}}</p>
+            <p>{{message.updateTime}}</p>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </scrollable>
+</g-view>

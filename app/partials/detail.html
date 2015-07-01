@@ -7,7 +7,7 @@
   </header>
   <scrollable show-scrollbar="true" scroller-id="s1" class="content">
     <div class="area image-area">
-      <button class="btn btn-positive pull-right join" hm-tap="join()" ng-show="showJoin()">报名</button>
+      <button class="btn btn-positive pull-right join" hm-tap="join()" ng-show="isAuthorized() && !hasJoined(actId)">报名</button>
       <img class="img-responsive center-block" ng-src="{{images}}">
     </div>
     <h4 class="area">{{actTitle}}</h4>
@@ -17,16 +17,27 @@
     <p>发起：{{planner}}</p>
     <a href="#mapModal" hm-tap="tapAddress()">地点：{{address}}</a>
     <div class="list-group" show-scrollbar="true" class="list-group">
-        <li ng-repeat="item in items" class="list-group-item">
-            <p>{{item.title}}</p>
-            <p>地点：{{item.place}}</p>
-            <p>内容：{{item.content}}</p>
-            <p>持续时间：{{item.lasting}}</p>
-        </li>
+      <li ng-repeat="item in items" class="list-group-item">
+        <p>{{item.title}}</p>
+        <p>地点：{{item.place}}</p>
+        <p>内容：{{item.content}}</p>
+        <p>持续时间：{{item.lasting}}</p>
+      </li>
     </div>
     <li ng-repeat="member in members" class="">
-        <a href="#/user">{{member.nickname}}&nbsp;</a>
+      <a href="#/user">{{member.nickname}}&nbsp;</a>
     </li>
+    <li ng-repeat="discuss in messages" class="">
+      <p>{{discuss.user}}&nbsp; {{discuss.time}}</p>
+      <p>{{discuss.message}}</p>
+    </li>
+    <div ng-show="isAuthorized() && hasJoined(actId)">
+      <div class="input-rows">
+        <label>留言</label>
+        <textarea ng-model="comment.text" rows="3"></textarea>
+      </div>
+      <button type="button" hm-tap="addMessage()" class="btn btn-primary btn-block" style="margin-top: 10px">提交</button>
+    </div>
   </scrollable>
 
   <div id="mapModal" class="modal">

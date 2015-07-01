@@ -113,6 +113,19 @@ switch ($api){
         );
         $data = array("success"=>$success);
         break;
+    case "get_act_messages":
+        Logger::log('get_act_messages');
+        $data = $grapesDB->getActivityMessages($_REQUEST['act']);
+        break;
+    case "add_act_message":
+        Logger::log('add_act_message');
+        $success = $grapesDB->addActivityMessage(
+            $_REQUEST['act'],
+            $_REQUEST['user'],
+            $_REQUEST['msg']
+        );
+        $data = array("success"=>$success);
+        break;
     default:
         $data = array();
 }

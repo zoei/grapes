@@ -1,4 +1,4 @@
-angular.module("grapes.controllers").controller "HomeCtrl", [
+angular.module("grapes.controllers").controller "UserJoinedCtrl", [
   "$scope"
   "$rootScope"
   "GrapesServ"
@@ -16,16 +16,12 @@ angular.module("grapes.controllers").controller "HomeCtrl", [
       '旅行'
       '其它'
     ]
-
     $scope.onActTap = (act) ->
       window.location.hash = "#/detail/" + act.id
       return
 
-    $scope.getAllActivities = ->
-      $scope.acts = GrapesServ.getPublicActivities count: 20
-
     $scope.getUserActivities = ->
-      $rootScope.userActivities = GrapesServ.getUserActivities user: $rootScope.currentUser
+      $rootScope.userActivities = $scope.acts = GrapesServ.getUserActivities user: $rootScope.currentUser
 
     $scope.swipePage = (direction)->
       activeTab = $ '.segmented-control a.active'
@@ -46,6 +42,5 @@ angular.module("grapes.controllers").controller "HomeCtrl", [
       eval '$scope.' + nextTab.attr('hm-tap')
       return
 
-    $scope.getAllActivities()
     $scope.getUserActivities()
 ]

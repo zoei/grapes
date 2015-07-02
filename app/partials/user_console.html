@@ -3,7 +3,7 @@
     <ul class="table-view">
       <li class="table-view-cell table-view-divider"></li>
       <li hm-tap="modUser(user)" class="table-view-cell media user-brief">
-        <div class="headicon" style="background-image:url({{user.headicon}})"></div>
+        <div class="headicon" ng-style="getHeadIcon()"></div>
         <span class="">
           <span class="media-body">
             {{user.nickname}}

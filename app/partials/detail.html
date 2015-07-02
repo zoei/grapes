@@ -1,13 +1,11 @@
 <g-view id="detail">
   <header class="bar bar-nav">
-    <a class="btn btn-link btn-nav pull-left" href="#home">
-      <span class="icon icon-left-nav"></span>
-    </a>
+    <back-button/>
     <h1 class="title">活动详情</h1>
   </header>
   <scrollable show-scrollbar="true" scroller-id="s1" class="content">
     <div class="area image-area">
-      <button class="btn btn-positive pull-right join" hm-tap="join()" ng-show="isAuthorized() && !hasJoined(actId)">报名</button>
+      <button class="btn btn-positive pull-right join" hm-tap="join()" ng-if="isAuthorized() && !hasJoined(actId)">报名</button>
       <img class="img-responsive center-block" ng-src="{{images}}">
     </div>
     <h4 class="area">{{actTitle}}</h4>

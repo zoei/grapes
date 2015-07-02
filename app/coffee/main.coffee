@@ -1,14 +1,18 @@
 angular.module("grapes", [
   "ngRoute"
   "ngResource"
+  "ngAnimate"
   "hmTouchEvents"
   "grapes.utils"
   "grapes.services"
   "grapes.directives"
   "grapes.controllers"
 ]).config [
+  "$locationProvider"
   "$routeProvider"
-  ($routeProvider) ->
+  ($locationProvider, $routeProvider) ->
+    # $locationProvider.html5Mode true
+
     $routeProvider.when("/welcome",
       templateUrl: "partials/welcome.html"
       controller: "WelcomeCtrl"

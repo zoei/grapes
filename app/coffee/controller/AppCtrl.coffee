@@ -1,7 +1,10 @@
 angular.module("grapes.controllers").controller "AppCtrl", [
   "$scope"
   '$rootScope'
-  ($scope, $rootScope) ->
+  '$route'
+  '$routeParams'
+  '$location'
+  ($scope, $rootScope, $route, $routeParams, $location) ->
 
     $scope.setTitle = (options) ->
       $scope.title = options.title or ""

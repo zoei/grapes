@@ -13,4 +13,7 @@ angular.module("grapes.controllers").controller "UserConsoleCtrl", [
       (result) ->
       (error) ->
         console.log error
+
+    $scope.getHeadIcon = ->
+      if $scope.user.headicon then 'background-image': 'url(' + $scope.user.headicon + ')' else ''
 ]

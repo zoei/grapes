@@ -36,8 +36,8 @@ var tasks = {
 
         gulp.src([
                 // './app/css/bootstrap.customize.min.css',
-                './app/css/ratchet.min.css'
-                // './app/css/ratchet-theme-ios.min.css'
+                './app/css/ratchet.min.css',
+                './app/css/animate.min.css'
             ])
             .pipe(concat('deps.css'))
             .pipe(gulp.dest('./build/www/css'));
@@ -58,10 +58,11 @@ var tasks = {
                 './app/lib/hammer.js',
                 './app/lib/iscroll.js',
                 './app/lib/ratchet.js',
-                './app/lib/angular.js',
+                './app/lib/angular.min.js',
                 './app/lib/angular-route.js',
                 './app/lib/angular-resource.js',
                 './app/lib/angular-hammer.js',
+                './app/lib/angular-animate.min.js',
             ])
             .pipe(concat('deps.js'));
 

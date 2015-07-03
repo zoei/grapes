@@ -2,7 +2,8 @@ angular.module("grapes.controllers").controller "UserLoginCtrl", [
   "$scope"
   "$rootScope"
   "AuthServ"
-  ($scope, $rootScope, AuthServ) ->
+  "$window"
+  ($scope, $rootScope, AuthServ, $window) ->
     $scope.user = 
       name: ""
       pass: ""
@@ -15,7 +16,7 @@ angular.module("grapes.controllers").controller "UserLoginCtrl", [
         if result.access_token
           $rootScope.tokenInfo = result
           $rootScope.currentUser = $scope.user.name
-          window.location.hash = "#/user_console"
+          $window.history.back()
         return
 
       return

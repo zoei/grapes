@@ -1,9 +1,9 @@
-<g-view id="home" hm-swipeleft="swipePage('left')" hm-swiperight="swipePage('right')">
+<div>
   <header class="bar bar-nav">
     <back-button/>
     <a class="btn btn-link pull-right" href="#filterPopover">筛选</a>
   </header>
-  <scrollable show-scrollbar="true" scroller-id="s1" class="content with-footer"> 
+  <scrollable show-scrollbar="true" scroller-id="s1" class="content"> 
     <ul class="table-view">
       <li ng-repeat="act in acts" hm-tap="onActTap(act)" class="table-view-cell media">
         <a class="navigate-right">
@@ -39,5 +39,4 @@
       <a class="control-item" hm-tap="switchNearbyActivities()">附近</a>
     </div>
   </div>
-  <nav-bar ds="barTabs" active="home"></nav-bar>
-</g-view>
+</div>

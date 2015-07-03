@@ -37,7 +37,7 @@ var tasks = {
         gulp.src([
                 // './app/css/bootstrap.customize.min.css',
                 './app/css/ratchet.min.css',
-                './app/css/animate.min.css'
+                // './app/css/animate.min.css'
             ])
             .pipe(concat('deps.css'))
             .pipe(gulp.dest('./build/www/css'));

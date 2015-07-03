@@ -41,14 +41,21 @@ angular.module("grapes.controllers").controller "AppCtrl", [
       $scope.showNavbar = true
       window.location.hash = '#/home'
 
-    # $scope.$on '$locationChangeStart', (event) ->
-    #   console.log event
-    # $scope.$on '$viewContentLoaded', ->
-    #   console.log 'viewContentLoaded'
-    # $scope.$on '$routeChangeSuccess', ->
-    #   console.log 'routeChangeSuccess'
-    # $scope.$on '$stateChangeSuccess', ->
-    #   console.log 'stateChangeSuccess'
+    $scope.$on '$locationChangeStart', ->
+    $scope.$on '$viewContentLoaded', ->
+      /^\/(\w*)/.test $scope.currentRoute.originalPath
+      currentViewName = RegExp.$1
+
+      preView = $ '[ng-view][id]'
+      preView.attr 'switched-view', currentViewName
+
+      currentView = $ '[ng-view]:not([id])'
+      currentView.attr 'id', currentViewName
+      currentView.attr 'switched-view', preView.attr('id')
+
+    $scope.$on '$routeChangeSuccess', (e, currentRoute, preRoute)->
+      $scope.preRoute = preRoute
+      $scope.currentRoute = currentRoute
 
     $scope.isAuthorized = ->
       $rootScope.tokenInfo?.access_token

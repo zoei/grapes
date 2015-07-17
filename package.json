@@ -2,7 +2,7 @@
   "name": "grapes",
   "version": "0.0.0",
   "description": "",
-  "main": "app/js/main.js",
+  "main": "build/www/index.html",
   "dependencies": {},
   "devDependencies": {
     "commander": "^2.8.1",
